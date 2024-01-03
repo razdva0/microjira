@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "microjira"
+version = "0.1.0"
+description = ""
+authors = ["Василий Миронов <vmikhamironov@sberbank.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+django = "^5.0"
+graphene-django = "^3.1.5"
+redis = "^5.0.1"
+psycopg2-binary = "^2.9.9"
+pydantic = {extras = ["dotenv"], version = "^2.5.3"}
+pydantic-settings = "^2.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

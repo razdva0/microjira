@@ -1,0 +1,37 @@
+version: '1.0'
+
+services:
+
+  db_postgres:
+    image: postgres:latest
+    container_name: mj-postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data:delegated
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=adminpass
+      - POSTGRES_DB=postgres_db
+    ports:
+      - "5432:5432"
+    networks:
+      - service
+
+  db_redis:
+    image: bitnami/redis:latest
+    container_name: mj-redis
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_REPLICATION_MODE=master
+      - REDIS_PASSWORD=adminpass
+    ports:
+      - "6321:6321"
+    networks:
+      - service
+
+networks:
+  service:
+    driver: bridge
+
+volumes:
+  notused:
+  postgres_data:
